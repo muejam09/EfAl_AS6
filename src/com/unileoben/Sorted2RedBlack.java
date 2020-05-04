@@ -9,6 +9,7 @@ public class Sorted2RedBlack {
 	 * @return root of the red-black tree
 	 */
 	public RedBlackNode buildRedBlackTree(int[] a) {
+		// Hallo Jakob, das ist ein Test
 		return null;
 	}
 
