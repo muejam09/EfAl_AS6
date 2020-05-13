@@ -1,3 +1,5 @@
+// Tabea Ulm, Jakob Müller
+
 package redblack;
 
 import redblack.defs.RedBlackNode;
@@ -29,24 +31,29 @@ public class Sorted2RedBlack {
         int elementsLeftSide = middle - startIndex;
         int elementsRightSide = endIndex - middle;
 
-        if (isCompleteTreeStructure(elementsLeftSide)){
-            if (!isCompleteTreeStructure(elementsRightSide)) node.setColor(true);
+        if (elementsLeftSide != elementsRightSide){
+            if (isCompleteTreeStructure(elementsLeftSide)){
+                node.setColor(true);
+            }
         }
 
         return node;
     }
 
     private static boolean isCompleteTreeStructure(int nrElements){
-        // Hilfsmethode um zu färben
-        int completeNumber = 1;
-        int i = 0;
 
-        while (nrElements >= completeNumber){
-            if(completeNumber == nrElements) return true;
-            i++;
-            completeNumber = completeNumber + 2*i;
+        int compareNumber = nrElements+1;
+        int binaryNumberCounter = 1;
+        int binaryNumber = (int) Math.pow(2, binaryNumberCounter);
+
+        while(compareNumber >= binaryNumber){
+            binaryNumber = (int) Math.pow(2, binaryNumberCounter);
+            if (binaryNumber == compareNumber) return true;
+            binaryNumberCounter++;
         }
+
         return false;
+
     }
 
 
