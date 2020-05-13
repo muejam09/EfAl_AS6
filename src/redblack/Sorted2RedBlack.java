@@ -11,7 +11,7 @@ public class Sorted2RedBlack {
      * @return root of the red-black tree
      */
     public RedBlackNode buildRedBlackTree(int[] a) {
-        return null;
+        return arrayToRBBst(a, 0, a.length-1);
     }
 
     public static RedBlackNode arrayToRBBst(int[] a, int startIndex, int endIndex) {
@@ -26,7 +26,26 @@ public class Sorted2RedBlack {
         node.setLeft(arrayToRBBst(a, startIndex, middle - 1));
         node.setRight(arrayToRBBst(a, middle + 1, endIndex));
 
+        int elementsLeftSide = middle - startIndex;
+        int elementsRightSide = endIndex - middle;
+
+        if (isCompleteTreeStructure(elementsLeftSide)){
+            if (!isCompleteTreeStructure(elementsRightSide)) node.setColor(true);
+        }
+
         return node;
+    }
+
+    private static boolean isCompleteTreeStructure(int nrElements){
+        int completeNumber = 1;
+        int i = 0;
+
+        while (nrElements >= completeNumber){
+            if(completeNumber == nrElements) return true;
+            i++;
+            completeNumber = completeNumber + 2*i;
+        }
+        return false;
     }
 
 
