@@ -37,6 +37,7 @@ public class Sorted2RedBlack {
     }
 
     private static boolean isCompleteTreeStructure(int nrElements){
+        // Hilfsmethode um zu färben
         int completeNumber = 1;
         int i = 0;
 
